@@ -1,0 +1,314 @@
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+select,
+button,
+input,
+textarea {
+    outline: none;
+    border: none;
+    font-family: inherit;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+/* header */
+#header {
+    background-color: #A00000;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+    padding-top: env(safe-area-inset-top);
+}
+
+#header div {
+    padding: 10px 0;
+}
+
+/*slider*/
+.swiper-container {
+    flex-grow: 1;
+    background-color: #DADADA;
+    margin: 0 !important;
+    /* iOS prevents overflow-y */
+    height: 1px;
+}
+
+.swiper-slide {
+    padding: 10px;
+    width: 100% !important;
+    overflow-y: auto;
+}
+
+/*footer */
+#footer {
+    background-color: #393f9f;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+#nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.navItem {
+    height: 60px;
+    width: 60px;
+    background-color: #292d70;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.navItem.active {
+    background-color: #A00000;
+}
+
+/*general rules*/
+.card {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    margin-bottom: 15px;
+    color: black;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.hr {
+    border: 2px solid #A00000;
+    margin: 10px auto;
+    background-color: #A00000;
+}
+
+.large {
+    font-size: 25px !important;
+}
+
+.medium {
+    font-size: 20px !important;
+}
+
+.small {
+    font-size: 15px !important;
+}
+
+.hide {
+    display: none;
+}
+
+/****Home******/
+#DropDayLabel,
+#Clock,
+#LunchSelect,
+#AnnouncementsContainer {
+    text-align: center;
+    padding: 8px 16px;
+}
+
+#LunchSelect label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#LunchSelect input {
+    height: 40px;
+    width: 40px;
+    margin-right: 20px;
+    border-radius: 100%;
+    -webkit-appearance: radio;
+    appearance: radio;
+}
+
+#bobcatTV {
+    display: block;
+    max-width: 640px;
+    margin: auto;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+/********Schedule******/
+#ScheduleTitle {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+#ScheduleSelect,
+#ScheduleSelect option {
+    border: 1px solid black;
+    border-radius: 0px;
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 10px 5px;
+    font-size: 18px;
+    width: 100%;
+}
+
+#ScheduleTable {
+    padding-top: 10px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 225px;
+    margin: auto;
+    justify-content: center;
+}
+
+#ScheduleTable>div {
+    width: 50%;
+    padding: 3px;
+}
+
+#ScheduleTable hr {
+    border: 2px solid #A00000;
+    margin: 10px auto;
+    background-color: #A00000;
+    width: 100%;
+}
+
+/********Calculator******/
+#CalculatorSelector {
+    display: flex;
+    flex-direction: column;
+}
+
+#CalculatorSelector>div {
+    flex-grow: 1;
+    padding: 8px 16px;
+    border-bottom: 6px solid #DADADA;
+    cursor: pointer;
+}
+
+#CalculatorSelector>div.active {
+    border-bottom: 6px solid #A00000;
+}
+
+.GPAItem {
+    padding-bottom: 10px;
+    border-bottom: 2px solid #DADADA;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.GPAClass {
+    border: 1px solid black !important;
+    border-radius: 0px;
+    font-size: 18px;
+    flex-grow: 1;
+    padding: 10px;
+    width: 100%;
+}
+
+.GPACredits,
+.GPAGrade {
+    border: 1px solid black;
+    border-radius: 0px;
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 10px;
+    font-size: 18px;
+}
+
+#GPAButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#GPAButtons>div {
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+#GPANotice {
+    margin-top: 20px;
+}
+
+.FinalGradeRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.FinalGradeRow div,
+.FinalGradeRow select {
+    width: 19%;
+    text-align: center;
+}
+
+.FinalGradeRow select,
+.FinalGradeRow select option {
+    border: 1px solid black;
+    border-radius: 0px;
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 10px;
+    font-size: 18px;
+}
+
+#FinalGradeButton {
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#FinalGradeNotice {
+    margin-top: 20px;
+}
+
+@media (min-width: 1750px) {
+    #DropDayLabel {
+        font-size: 100px !important;
+    }
+}

@@ -1,0 +1,189 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <!--Title & Meta-->
+    <title>My Bobcat (TV)</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="user-scalable=no, initial-scale=1, width=device-width, height=device-height, viewport-fit=cover">
+
+    <!--CSS & Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        select,
+        button,
+        input,
+        textarea {
+            outline: none;
+            border: none;
+            font-family: 'Open Sans', sans-serif;
+            -webkit-appearance: none;
+            appearance: none;
+            border-radius: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-image: url('img/background.svg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: repeat-y;
+        }
+
+        #header {
+            font-size: 20px;
+            text-align: center;
+            background-color: white;
+            padding: 10px;
+            margin: 20px auto;
+            max-width: 500px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .formContainer {
+            background-color: black;
+            width: 90%;
+            max-width: 500px;
+            margin: 0 auto 15px;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        }
+
+        .title {
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .formContainer input {
+            padding: 10px;
+            font-size: 15px;
+            display: block;
+            width: 100%;
+            margin: 8px 0;
+            background-color: white;
+            margin-bottom: 8px;
+        }
+
+        .formContainer textarea {
+            width: 100%;
+            display: block;
+            padding: 10px;
+            font-size: 15px;
+            resize: vertical;
+            height: 250px;
+            margin-bottom: 8px;
+        }
+
+        .formContainer button {
+            display: inline-block;
+            font-size: 15px;
+            padding: 10px 30px;
+            background-color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="header">My Bobcat (TV)</div>
+
+    <div class="formContainer">
+        <div class="title">Upload The PNG File</div>
+        <form id="pngForm">
+            <input type="file" id="pngInput" accept="image/x-png" required>
+            <button>Upload</button>
+        </form>
+    </div>
+
+    <div class="formContainer">
+        <div class="title">Enter The Video URL</div>
+        <form id="urlForm">
+            <input type="text" id="urlInput" placeholder="https://youtu.be/DaNOoJJA44k" required>
+            <button>Update</button>
+        </form>
+    </div>
+
+    <div class="formContainer">
+        <div class="title">Disable Ad</div>
+        <form id="disableForm">
+            <button>Disable</button>
+        </form>
+    </div>
+
+    <script>
+        document.querySelector("#pngForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let formData = new FormData();
+            formData.append("pngInput", document.querySelector("#pngInput").files[0]);
+            fetch("php/upload.php", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(function (data) {
+                    return data.text();
+                })
+                .then(function (data) {
+                    alert(data);
+                })
+        });
+
+        document.querySelector("#urlForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let formData = new FormData();
+            formData.append("urlInput", document.querySelector("#urlInput").value);
+            fetch("php/url.php", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(function (data) {
+                    return data.text();
+                })
+                .then(function (data) {
+                    alert(data);
+                })
+        });
+
+        document.querySelector("#disableForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            fetch("php/disable.php")
+                .then(function (data) {
+                    return data.text();
+                })
+                .then(function (data) {
+                    alert(data);
+                })
+        });
+    </script>
+
+</body>
+
+</html>
