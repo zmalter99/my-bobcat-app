@@ -25,6 +25,7 @@ class WebViewAppState extends State<WebViewApp> {
       backgroundColor: Color(0xFFA00000),
       body: SafeArea( 
         top: true,
+        bottom: false,
         child: Stack(
         children: <Widget>[
           WebView(
