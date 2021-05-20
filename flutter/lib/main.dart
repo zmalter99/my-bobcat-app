@@ -22,7 +22,10 @@ class WebViewAppState extends State<WebViewApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+      backgroundColor: Color(0xFFA00000),
+      body: SafeArea( 
+        top: true,
+        child: Stack(
         children: <Widget>[
           WebView(
             initialUrl: "https://mybobcat.net/app",
@@ -42,6 +45,7 @@ class WebViewAppState extends State<WebViewApp> {
                 )
               : Stack(),
         ],
+        )
       ),
     );
   }
