@@ -22,19 +22,16 @@ class WebViewAppState extends State<WebViewApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFA00000),
       body: Stack(
         children: <Widget>[
-          SafeArea(
-            child: WebView(
-              initialUrl: "https://mybobcat.net/app",
-              javascriptMode: JavascriptMode.unrestricted,
-              onPageFinished: (finish) {
-                setState(() {
-                  isLoading = false;
-                });
-              },
-            ),
+          WebView(
+            initialUrl: "https://mybobcat.net/app",
+            javascriptMode: JavascriptMode.unrestricted,
+            onPageFinished: (finish) {
+              setState(() {
+                isLoading = false;
+              });
+            },
           ),
           isLoading
               ? Center(
