@@ -5,12 +5,11 @@ import 'package:webview_flutter/webview_flutter.dart';
 void main() => runApp(MaterialApp(home: WebViewApp()));
 
 class WebViewApp extends StatefulWidget {
-    @override
-    WebViewAppState createState() => WebViewAppState();
+  @override
+  WebViewAppState createState() => WebViewAppState();
 }
 
-class WebViewAppState extends State<WebViewApp>{
-
+class WebViewAppState extends State<WebViewApp> {
   @override
   void initState() {
     super.initState();
@@ -23,6 +22,7 @@ class WebViewAppState extends State<WebViewApp>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFA00000),
       body: Stack(
         children: <Widget>[
           SafeArea(
@@ -36,14 +36,16 @@ class WebViewAppState extends State<WebViewApp>{
               },
             ),
           ),
-          isLoading ? Center( 
-            child: CircularProgressIndicator(
-              valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
-            ),
-          ) : Stack(),
+          isLoading
+              ? Center(
+                  child: CircularProgressIndicator(
+                    valueColor:
+                        new AlwaysStoppedAnimation<Color>(Color(0xFFA00000)),
+                  ),
+                )
+              : Stack(),
         ],
       ),
     );
   }
-
 }
