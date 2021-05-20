@@ -82,9 +82,9 @@ document.querySelector("#GPACalculate").addEventListener("click", function () {
     });
     //check if anything is filled out
     if (totalCredits == 0) {
-        alert("Please fill out your grades to calculate your GPA.");
+        swal("Please fill out your grades to calculate your GPA.");
     } else {
-        alert("Your GPA is: " + (totalGrade / totalCredits).toFixed(3));
+        swal("Your GPA is: " + (totalGrade / totalCredits).toFixed(3));
     }
 });
 
@@ -105,27 +105,27 @@ document.querySelector("#FinalGradeButton").addEventListener("click", function (
 
     //check if any drop downs are filled out
     if (totalQuarters == 0) {
-        alert("I think you forget to fill our your grades..");
+        swal("I think you forget to fill our your grades..");
         return;
     }
 
     let finalGrade = totalGrade / totalQuarters;
     if (finalGrade >= 4.30 && finalGrade <= 4.60) {
-        alert("Your grade is: A+");
+        swal("Your grade is: A+");
     } else if (finalGrade >= 3.80 && finalGrade <= 4.29) {
-        alert("Your grade is: A");
+        swal("Your grade is: A");
     } else if (finalGrade >= 3.30 && finalGrade <= 3.79) {
-        alert("Your grade is: B+");
+        swal("Your grade is: B+");
     } else if (finalGrade >= 2.80 && finalGrade <= 3.29) {
-        alert("Your grade is: B");
+        swal("Your grade is: B");
     } else if (finalGrade >= 2.30 && finalGrade <= 2.79) {
-        alert("Your grade is: C+");
+        swal("Your grade is: C+");
     } else if (finalGrade >= 1.50 && finalGrade <= 2.29) {
-        alert("Your grade is: C");
+        swal("Your grade is: C");
     } else if (finalGrade >= 0.80 && finalGrade <= 1.49) {
-        alert("Your grade is: D");
+        swal("Your grade is: D");
     } else if (finalGrade >= 0.00 && finalGrade <= 0.79) {
-        alert("Your grade is: F");
+        swal("Your grade is: F");
     }
 
 });
