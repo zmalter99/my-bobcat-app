@@ -1,11 +1,3 @@
-//check for cordova event listener
-document.addEventListener("deviceready", function () {
-    console.log("Cordova Detected");
-    //InAppBrowser variable update
-    window.open = cordova.InAppBrowser.open;
-    document.querySelector("html").style.height = "100vh";
-});
-
 //slider
 const swiper = new Swiper('.swiper-container');
 
