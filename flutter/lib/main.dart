@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 void main() => runApp(MaterialApp(home: WebViewApp()));
@@ -15,6 +16,11 @@ class WebViewAppState extends State<WebViewApp> {
     super.initState();
     // Enable hybrid composition.
     if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
+
+    //statusbar change
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(statusBarBrightness: Brightness.dark)
+    );
   }
 
   bool isLoading = true;
