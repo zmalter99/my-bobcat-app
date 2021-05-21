@@ -23,31 +23,30 @@ class WebViewAppState extends State<WebViewApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFA00000),
-      body: SafeArea( 
-        top: true,
-        bottom: false,
-        child: Stack(
-        children: <Widget>[
-          WebView(
-            initialUrl: "https://mybobcat.net/app",
-            javascriptMode: JavascriptMode.unrestricted,
-            onPageFinished: (finish) {
-              setState(() {
-                isLoading = false;
-              });
-            },
-          ),
-          isLoading
-              ? Center(
-                  child: CircularProgressIndicator(
-                    valueColor:
-                        new AlwaysStoppedAnimation<Color>(Color(0xFFA00000)),
-                  ),
-                )
-              : Stack(),
-        ],
-        )
-      ),
+      body: SafeArea(
+          top: true,
+          bottom: false,
+          child: Stack(
+            children: <Widget>[
+              WebView(
+                initialUrl: "https://mybobcat.net/app",
+                javascriptMode: JavascriptMode.unrestricted,
+                onPageFinished: (finish) {
+                  setState(() {
+                    isLoading = false;
+                  });
+                },
+              ),
+              isLoading
+                  ? Center(
+                      child: CircularProgressIndicator(
+                        valueColor: new AlwaysStoppedAnimation<Color>(
+                            Color(0xFFA00000)),
+                      ),
+                    )
+                  : Stack(),
+            ],
+          )),
     );
   }
 }
