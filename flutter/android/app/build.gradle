@@ -1,8 +1,10 @@
+//new section
 def keystoreProperties = new Properties()
 def keystorePropertiesFile = rootProject.file('key.properties')
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
+//new section end
 
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
@@ -41,7 +43,7 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.maltertech.my_bobcat2"
-        minSdkVersion 19
+        minSdkVersion 19 //changed
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
