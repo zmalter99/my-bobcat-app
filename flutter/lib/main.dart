@@ -44,13 +44,7 @@ class WebViewAppState extends State<WebViewApp> {
                   setState(() {
                     isLoading = false;
                   });
-                },
-                // https://stackoverflow.com/a/62474568
-                onWebViewCreated: (webViewController) {
-                    webViewController.clearCache();
-                    final cookieManager = CookieManager();
-                    cookieManager.clearCookies();
-                },
+                }
               ),
               isLoading
                   ? Center(
