@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-void main() => runApp(MaterialApp(home: WebViewApp()));
+void main() => runApp(MaterialApp(
+  debugShowCheckedModeBanner: false,
+  home: WebViewApp()
+));
 
 class WebViewApp extends StatefulWidget {
   @override
