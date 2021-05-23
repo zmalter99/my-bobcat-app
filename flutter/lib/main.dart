@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(MaterialApp(
   debugShowCheckedModeBanner: false,
@@ -45,14 +44,6 @@ class WebViewAppState extends State<WebViewApp> {
                   setState(() {
                     isLoading = false;
                   });
-                },
-                navigationDelegate: (NavigationRequest request) {
-                  if (request.url.startsWith("https://mybobcat.net")) {
-                    return NavigationDecision.navigate;
-                  } else {
-                    _launchURL(request.url);
-                    return NavigationDecision.prevent;
-                  }
                 }
               ),
               isLoading
@@ -67,13 +58,4 @@ class WebViewAppState extends State<WebViewApp> {
           )),
     );
   }
-
-    _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
 }
