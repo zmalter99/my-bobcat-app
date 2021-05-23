@@ -239,10 +239,11 @@ fetch(`/php/ad.txt?${randomNumber}`)
     })
     .then(function (data) {
         if (data != "1") {
+            let rawURL = "https://www.youtube.com/watch?v=WKsPez_EuZg".split("?v=")[1];
             document.querySelector("#AnnouncementsContainer").insertAdjacentHTML("afterend", `
                 <img src="/php/ad.png?${randomNumber}" id="bobcatTV">
                 <div id="bobcatTVFrame">
-                    <iframe width="1280" height="720" src="${data}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="1280" height="720" src="https://www.youtube.com/embed/${rawURL}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>        
             `);
             document.querySelector("#bobcatTV").addEventListener("click", function () {
