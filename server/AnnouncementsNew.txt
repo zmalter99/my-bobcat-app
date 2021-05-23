@@ -1,0 +1,310 @@
+<style>
+    .scheduleGrid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        width: 100%;
+        font-size: 13px;
+    }
+
+    .scheduleGrid>.header {
+        font-weight: bold;
+    }
+
+    .scheduleGrid>.hallTop {
+        border-top: 1px solid black;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .scheduleGrid>.hallBottom {
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .scheduleGrid>div {
+        padding: 1px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .scheduleGrid>.lightblue {
+        background-color: #cfe2f3;
+    }
+
+    .scheduleGrid>.yellow {
+        background-color: #ffe599;
+    }
+
+    .scheduleGrid>.green {
+        background-color: #6aa84f;
+    }
+
+    .scheduleGrid>.purple {
+        background-color: #d9d2e9;
+    }
+
+    .scheduleGrid>.red {
+        background-color: #e6b8af;
+    }
+
+    .scheduleGrid>.blue {
+        background-color: #4a86e8;
+    }
+
+    .scheduleGrid>.orange {
+        background-color: #ff6d01;
+    }
+
+    .scheduleGrid>.gray {
+        background-color: #cccccc;
+    }
+
+    .scheduleGrid>.cyan {
+        background-color: #46bdc6;
+    }
+
+    @media (min-width: 1750px) {
+        .scheduleGrid {
+            font-size: 30px !important;
+        }
+    }
+</style>
+
+<div class="scheduleGrid tiny">
+    <div class="header hallTop">Halls</div>
+    <div class="header">A-K</div>
+    <div class="header">A-K</div>
+    <div class="header">Alt</div>
+    <div class="header">L-Z</div>
+    <div class="header">L-Z</div>
+
+    <div class="header hallBottom">100/200</div>
+    <div class="header">White</div>
+    <div class="header">Navy</div>
+    <div class="header">Hills</div>
+    <div class="header">Red</div>
+    <div class="header">Black</div>
+
+    <div class="header">Time:</div>
+    <div class="header">M</div>
+    <div class="header">T</div>
+    <div class="header">W</div>
+    <div class="header">T</div>
+    <div class="header">F</div>
+
+    <div>7:45-8:30</div>
+    <div class="gray">IEL</div>
+    <div class="gray">SGT</div>
+    <div class="gray">IEL</div>
+    <div class="gray">SGT</div>
+    <div class="gray">IEL</div>
+
+    <div class="gray">8:30-9:20</div>
+    <div class="lightblue">A (1)</div>
+    <div class="yellow">B (2)</div>
+    <div class="lightblue">A (1)</div>
+    <div class="yellow">B (2)</div>
+    <div class="lightblue">A (1)</div>
+
+    <div>9:20-9:30</div>
+    <div class="lightblue">TRA</div>
+    <div class="yellow">TRA</div>
+    <div class="lightblue">TRA</div>
+    <div class="yellow">TRA</div>
+    <div class="lightblue">TRA</div>
+
+    <div class="gray">9:30-10:20</div>
+    <div class="yellow">B (2)</div>
+    <div class="green">C (3)</div>
+    <div class="green">C (3)</div>
+    <div class="purple">D (4)</div>
+    <div class="green">C (3)</div>
+
+    <div>10:20-10:30</div>
+    <div class="yellow">TRA</div>
+    <div class="green">TRA</div>
+    <div class="green">TRA</div>
+    <div class="purple">TRA</div>
+    <div class="green">TRA</div>
+
+    <div class="gray">10:30-11:20</div>
+    <div class="purple">D (4)</div>
+    <div class="red">E (5)</div>
+    <div class="purple">D (4)</div>
+    <div class="red">E (5)</div>
+    <div class="red">E (5)</div>
+
+    <div>11:20-12:10</div>
+    <div class="blue">Lunch </div>
+    <div class="blue">Lunch</div>
+    <div class="orange">Lunch</div>
+    <div class="blue">Lunch</div>
+    <div class="orange">Lunch</div>
+
+    <div class="gray">12:10-1:00</div>
+    <div class="blue">F (6)</div>
+    <div class="blue">F (6)</div>
+    <div class="orange">G (7)</div>
+    <div class="blue">F (6)</div>
+    <div class="orange">G (7)</div>
+
+    <div>1:00-1:10</div>
+    <div class="blue">TRA</div>
+    <div class="blue">TRA</div>
+    <div class="orange">TRA</div>
+    <div class="blue">TRA</div>
+    <div class="orange">TRA</div>
+
+    <div class="gray">1:10-2:00</div>
+    <div class="cyan">H (8)</div>
+    <div class="orange">G (7)</div>
+    <div class="green">SGT</div>
+    <div class="cyan">H (8)</div>
+    <div class="cyan">H (8)</div>
+
+    <div>2:00-2:25</div>
+    <div class="gray">SGT</div>
+    <div class="gray">IEL</div>
+    <div class="gray">SGT & Mentor</div>
+    <div class="gray">IEL</div>
+    <div class="gray">SGT</div>
+</div>
+
+<hr class="hr">
+
+<div class="scheduleGrid tiny">
+    <div class="header hallTop">Halls</div>
+    <div class="header">A-K</div>
+    <div class="header">A-K</div>
+    <div class="header">Alt</div>
+    <div class="header">L-Z</div>
+    <div class="header">L-Z</div>
+
+    <div class="header hallBottom">300/400</div>
+    <div class="header">White</div>
+    <div class="header">Navy</div>
+    <div class="header">Hills</div>
+    <div class="header">Red</div>
+    <div class="header">Black</div>
+
+    <div class="header">Time:</div>
+    <div class="header">M</div>
+    <div class="header">T</div>
+    <div class="header">W</div>
+    <div class="header">T</div>
+    <div class="header">F</div>
+
+    <div>7:45-8:30</div>
+    <div class="gray">IEL</div>
+    <div class="gray">SGT</div>
+    <div class="gray">IEL</div>
+    <div class="gray">SGT</div>
+    <div class="gray">IEL</div>
+
+    <div class="gray">8:30-9:20</div>
+    <div class="lightblue">A (1)</div>
+    <div class="yellow">B (2)</div>
+    <div class="lightblue">A (1)</div>
+    <div class="yellow">B (2)</div>
+    <div class="lightblue">A (1)</div>
+
+    <div>9:20-9:30</div>
+    <div class="lightblue">TRA</div>
+    <div class="yellow">TRA</div>
+    <div class="lightblue">TRA</div>
+    <div class="yellow">TRA</div>
+    <div class="lightblue">TRA</div>
+
+    <div class="gray">9:30-10:20</div>
+    <div class="yellow">B (2)</div>
+    <div class="green">C (3)</div>
+    <div class="green">C (3)</div>
+    <div class="purple">D (4)</div>
+    <div class="green">C (3)</div>
+
+    <div>10:20-10:30</div>
+    <div class="yellow">TRA</div>
+    <div class="green">TRA</div>
+    <div class="green">TRA</div>
+    <div class="purple">TRA</div>
+    <div class="green">TRA</div>
+
+    <div class="gray">10:30-11:20</div>
+    <div class="purple">D (4)</div>
+    <div class="red">E (5)</div>
+    <div class="purple">D (4)</div>
+    <div class="red">E (5)</div>
+    <div class="red">E (5)</div>
+
+    <div>11:20-11:30</div>
+    <div class="purple">TRA</div>
+    <div class="red">TRA</div>
+    <div class="purple">TRA</div>
+    <div class="red">TRA</div>
+    <div class="red">TRA</div>
+
+    <div class="gray">11:30-12:20</div>
+    <div class="blue">F (6)</div>
+    <div class="blue">F (6)</div>
+    <div class="orange">G (7)</div>
+    <div class="blue">F (6)</div>
+    <div class="orange">G (7)</div>
+
+    <div>12:20-1:10</div>
+    <div class="blue">Lunch </div>
+    <div class="blue">Lunch</div>
+    <div class="orange">Lunch</div>
+    <div class="blue">Lunch</div>
+    <div class="orange">Lunch</div>
+
+    <div class="gray">1:10-2:00</div>
+    <div class="cyan">H (8)</div>
+    <div class="orange">G (7)</div>
+    <div class="green">SGT</div>
+    <div class="cyan">H (8)</div>
+    <div class="cyan">H (8)</div>
+
+    <div>2:00-2:25</div>
+    <div class="gray">SGT</div>
+    <div class="gray">IEL</div>
+    <div class="gray">SGT & Mentor</div>
+    <div class="gray">IEL</div>
+    <div class="gray">SGT</div>
+</div>
+
+<div class="small">
+    <ul>
+        <li>Independent eLearning (IEL)</li>
+        <li>Small Group Tutorials (SGT)</li>
+        <li>Transition (TRA)</li>
+    </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    #LunchSelect {
+        display: none;
+    }
+
+    #bobcatTV {
+        margin-bottom: 15px;
+    }
+</style>

@@ -1,0 +1,100 @@
+
+<style>
+    #dayTitle {
+        text-align: center;
+    }
+
+    #dayGrid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        width: 100%;
+        font-size: 10px;
+    }
+
+    #dayGrid>.header {
+        font-weight: bold;
+    }
+
+    #dayGrid>div {
+        padding: 1px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #dayGrid>.black {
+        background-color: black;
+        color: white;
+    }
+
+    #dayGrid>.blue {
+        background-color: #3c78d8;
+    }
+
+    #dayGrid>.red {
+        background-color: #ff0000;
+    }
+
+    #dayGrid>.gray {
+        background-color: #b7b7b7;
+    }
+
+    #dayGrid .superTiny {
+        font-size: 9px;
+    }
+
+    @media (min-width: 1750px) {
+
+        #dayGrid,
+        #dayGrid .superTiny {
+            font-size: 30px !important;
+        }
+    }
+</style>
+
+
+<div id="dayTitle" class="medium">Rotating Day Schedule</div>
+<div id="dayGrid" class="tiny">
+    <div></div>
+    <div class="header">M</div>
+    <div class="header">T</div>
+    <div class="header">W</div>
+    <div class="header">T</div>
+    <div class="header">F</div>
+
+<div>May 17</div>
+    <div class="white">AC/DG/HL</div>
+    <div class="blue">DG/HL/MR</div>
+    <div class="gray">AC/DG/SZ </div>
+    <div class="red">AC/MR/SZ</div>
+     <div class="black">HL/MR/SZ</div>
+
+   <div>May 24</div>
+    <div class="black">AC/DG/HL</div>
+    <div class="red">DG/HL/MR</div>
+    <div class="gray">AC/DG/SZ </div>
+    <div class="gray">Memorial Day</div>
+    <div class = "gray">Memorial Day</div>
+
+   <div>May 31</div>
+    <div class="gray">Memorial Day</div>
+    <div class="gray">Memorial Day</div>
+    <div class="gray">AC/DG/SZ </div>
+    <div class="blue">AC/MR/SZ</div>
+    <div>HL/MR/SZ</div>
+
+<div>Jun 7</div>
+    <div class="white">AC/DG/HL</div>
+    <div class="blue">DG/HL/MR</div>
+    <div class="gray">AC/DG/SZ </div>
+    <div class="red">AC/MR/SZ</div>
+    <div class="black">HL/MR/SZ</div>
+
+<div>Jun 14</div>
+    <div class="white">AC/DG/HL</div>
+    <div class="blue">DG/HL/MR</div>
+    <div class="white">Regents</div>
+    <div class="white">Regents</div>
+    <div class="white">Regents</div>
+
