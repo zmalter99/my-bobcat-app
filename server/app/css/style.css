@@ -154,6 +154,10 @@ body {
     appearance: radio;
 }
 
+#bobcatTVLink {
+    display: block;
+}
+
 #bobcatTV {
     display: block;
     max-width: 640px;

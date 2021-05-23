@@ -239,9 +239,7 @@ fetch(`/php/ad.txt?${randomNumber}`)
     })
     .then(function (data) {
         if (data != "1") {
-            document.querySelector("#AnnouncementsContainer").insertAdjacentHTML("afterend", `<img src="/php/ad.png?${randomNumber}" id="bobcatTV">`);
-            document.querySelector("#bobcatTV").addEventListener("click", function () {
-                window.open(data, '_system');
-            });
+            document.querySelector("#AnnouncementsContainer").insertAdjacentHTML("afterend", `<a id="bobcatTVLink" href="${data}"><img src="/php/ad.png?${randomNumber}" id="bobcatTV"></a>`);
+            //document.querySelector("#bobcatTV").addEventListener("click", function () {});
         }
     });
