@@ -154,8 +154,24 @@ body {
     appearance: radio;
 }
 
-#bobcatTVLink {
+#bobcatTVFrame {
+    display: none;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+
+#bobcatTVFrame.active {
     display: block;
+}
+
+#bobcatTVFrame>iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
 }
 
 #bobcatTV {

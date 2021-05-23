@@ -239,7 +239,18 @@ fetch(`/php/ad.txt?${randomNumber}`)
     })
     .then(function (data) {
         if (data != "1") {
-            document.querySelector("#AnnouncementsContainer").insertAdjacentHTML("afterend", `<a id="bobcatTVLink" href="${data}"><img src="/php/ad.png?${randomNumber}" id="bobcatTV"></a>`);
-            //document.querySelector("#bobcatTV").addEventListener("click", function () {});
+            document.querySelector("#AnnouncementsContainer").insertAdjacentHTML("afterend", `
+                <img src="/php/ad.png?${randomNumber}" id="bobcatTV">
+                <div id="bobcatTVFrame">
+                    <iframe width="1280" height="720" src="${data}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>        
+            `);
+            document.querySelector("#bobcatTV").addEventListener("click", function () {
+                if (document.querySelector("#bobcatTVFrame").classList.contains("active")) {
+                    document.querySelector("#bobcatTVFrame").classList.remove("active");
+                } else {
+                    document.querySelector("#bobcatTVFrame").classList.add("active");
+                }
+            });
         }
     });
