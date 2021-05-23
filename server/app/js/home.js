@@ -159,7 +159,7 @@ document.querySelectorAll("[name='Lunch']").forEach(function (element) {
 //Drop Day which also starts initalization
 let DropDay;
 const randomNumber = new Date().getTime();
-fetch(`https://mybobcat.net/DropDayNew.txt?${randomNumber}`)
+fetch(`/DropDayNew.txt?${randomNumber}`)
     .then(function (data) {
         return data.text();
     }).then(function (data) {
@@ -169,7 +169,7 @@ fetch(`https://mybobcat.net/DropDayNew.txt?${randomNumber}`)
         //if special alert
         if (DropDay == 0) {
             document.querySelector("#DropDayLabel").innerHTML = "🚨<strong>Special Alert</strong>🚨";
-            fetch(`https://mybobcat.net/InfoNew.txt?${randomNumber}`)
+            fetch(`/InfoNew.txt?${randomNumber}`)
                 .then(function (data) {
                     return data.text();
                 }).then(function (data) {
@@ -225,7 +225,7 @@ fetch(`https://mybobcat.net/DropDayNew.txt?${randomNumber}`)
 
 
 //annocunements fetch request
-fetch(`https://mybobcat.net/AnnouncementsNew.txt?${randomNumber}`)
+fetch(`/AnnouncementsNew.txt?${randomNumber}`)
     .then(function (data) {
         return data.text();
     }).then(function (data) {
@@ -233,13 +233,13 @@ fetch(`https://mybobcat.net/AnnouncementsNew.txt?${randomNumber}`)
     });
 
 //bobcat tv fetch request
-fetch(`https://mybobcat.net/php/ad.txt?${randomNumber}`)
+fetch(`/php/ad.txt?${randomNumber}`)
     .then(function (data) {
         return data.text();
     })
     .then(function (data) {
         if (data != "1") {
-            document.querySelector("#AnnouncementsContainer").insertAdjacentHTML("afterend", `<img src="https://mybobcat.net/php/ad.png?${randomNumber}" id="bobcatTV">`);
+            document.querySelector("#AnnouncementsContainer").insertAdjacentHTML("afterend", `<img src="/php/ad.png?${randomNumber}" id="bobcatTV">`);
             document.querySelector("#bobcatTV").addEventListener("click", function () {
                 window.open(data, '_system');
             });
