@@ -53,7 +53,7 @@ body {
 }
 
 /*slider*/
-.swiper-container {
+.swiper {
     flex-grow: 1;
     background-color: #DADADA;
     margin: 0 !important;

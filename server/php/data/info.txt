@@ -1,0 +1,121 @@
+<style> 
+    #dayTitle {
+        text-align: center;
+    }
+
+    #dayTable {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+    }
+
+    #dayTable td:nth-child(even) {
+        background-color: #cccccc;
+    }
+
+    #dayTable td {
+        padding: 3px;
+    }
+
+    @media(max-width: 750px) {
+        #dayTable {
+            font-size: 13px!important;
+        }
+    }
+</style>
+
+
+<div id="dayTitle" class="medium">Today is Day 1</div>
+<table id="dayTable" class="medium">
+    <tbody>
+        <tr>
+            <td>Day</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td> 
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>7:45-8:10</td>
+            <td>OH</td>
+            <td>OH</td>
+            <td>OH</td>
+            <td>OH</td>
+            <td>OH</td>
+            <td>OH</td>
+            <td>OH</td>
+            <td>OH</td>
+        </tr>
+        <tr>
+            <td>8:10-9:14</td>
+            <td>1</td>
+            <td>1</td>
+            <td>2</td>
+            <td>1</td>
+            <td>3</td>
+            <td>1</td>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>9:18-10:22</td>
+            <td>2</td>
+            <td>4</td>
+            <td>3</td>
+            <td>2</td>
+            <td>4</td>
+            <td>2</td>
+            <td>4</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>10:26-11:30</td>
+            <td>3</td>
+            <td>5</td>
+            <td>4</td>
+            <td>5</td>
+            <td>5</td>
+            <td>3</td>
+            <td>5</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>11:30-12:13</td>
+            <td><i class="fas fa-utensils"></i></td>
+            <td><i class="fas fa-utensils"></i></td>
+            <td><i class="fas fa-utensils"></i></td>
+            <td><i class="fas fa-utensils"></i></td>
+            <td><i class="fas fa-utensils"></i></td>
+            <td><i class="fas fa-utensils"></i></td>
+            <td><i class="fas fa-utensils"></i></td>
+            <td><i class="fas fa-utensils"></i></td>
+        </tr>
+        <tr>
+            <td>12:13-1:17</td>
+            <td>6</td>
+            <td>6</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>6</td>
+            <td>6</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>1:21-2:25</td>
+            <td>7</td>
+            <td>8</td>
+            <td>7</td>
+            <td>8</td>
+            <td>8</td>
+            <td>7</td>
+            <td>8</td>
+            <td>8</td>
+        </tr>
+    </tbody>
+</table>
+<div class="small">*OH - Office Hours</div>

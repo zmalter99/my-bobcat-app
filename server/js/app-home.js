@@ -159,7 +159,7 @@ document.querySelectorAll("[name='Lunch']").forEach(function (element) {
 //Drop Day which also starts initalization
 let DropDay;
 const randomNumber = new Date().getTime();
-fetch(`/DropDayNew.txt?${randomNumber}`)
+fetch(`/php/data/dropday.txt?${randomNumber}`)
     .then(function (data) {
         return data.text();
     }).then(function (data) {
@@ -169,7 +169,7 @@ fetch(`/DropDayNew.txt?${randomNumber}`)
         //if special alert
         if (DropDay == 0) {
             document.querySelector("#DropDayLabel").innerHTML = "🚨<strong>Special Alert</strong>🚨";
-            fetch(`/InfoNew.txt?${randomNumber}`)
+            fetch(`/php/data/info.txt?${randomNumber}`)
                 .then(function (data) {
                     return data.text();
                 }).then(function (data) {
@@ -225,7 +225,7 @@ fetch(`/DropDayNew.txt?${randomNumber}`)
 
 
 //annocunements fetch request
-fetch(`/AnnouncementsNew.txt?${randomNumber}`)
+fetch(`/php/data/announcements.txt?${randomNumber}`)
     .then(function (data) {
         return data.text();
     }).then(function (data) {
@@ -233,7 +233,7 @@ fetch(`/AnnouncementsNew.txt?${randomNumber}`)
     });
 
 //bobcat tv fetch request
-fetch(`/php/ad.txt?${randomNumber}`)
+fetch(`/php/data/ad.txt?${randomNumber}`)
     .then(function (data) {
         return data.text();
     })
@@ -241,7 +241,7 @@ fetch(`/php/ad.txt?${randomNumber}`)
         if (data != "1") {
             let rawURL = "https://www.youtube.com/watch?v=WKsPez_EuZg".split("?v=")[1];
             document.querySelector("#AnnouncementsContainer").insertAdjacentHTML("afterend", `
-                <img src="/php/ad.png?${randomNumber}" id="bobcatTV">
+                <img src="/php/data/ad.png?${randomNumber}" id="bobcatTV">
                 <div id="bobcatTVFrame">
                     <iframe width="1280" height="720" src="https://www.youtube.com/embed/${rawURL}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>        

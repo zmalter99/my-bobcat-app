@@ -1,5 +1,5 @@
 //slider
-const swiper = new Swiper('.swiper-container');
+const swiper = new Swiper('.swiper');
 
 swiper.on('slideChange', function () {
     document.querySelector(".navItem.active").classList.remove("active");

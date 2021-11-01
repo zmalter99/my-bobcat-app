@@ -1,0 +1,15 @@
+Here are some resources to use in event of a mental health emergency:
+
+1. National Suicide Hotline (800) 273-Talk or (800) 273-8255 or text Got5 to 741741
+
+2. NYS Substance Abuse HOPEline-(877) 8-HOPENY or Text 467369
+
+<style>
+    #LunchSelect {
+        display: none;
+    }
+
+    #bobcatTV {
+        margin-bottom: 15px;
+    }
+</style>
