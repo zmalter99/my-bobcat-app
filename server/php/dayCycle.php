@@ -2,7 +2,7 @@
 
 /* Crontab 
 ############MY BOBCAT#############
-25 7 * * * wget https://mybobcat.net/php/dayCycle.php?password=myb0b(%40t
+25 7 * * * wget https://mybobcat.net/dayCycle.php?password=myb0b(%40t
 */
 
 // check password
@@ -36,7 +36,7 @@ if ($day < 8) {
 }
 
 // save day
-$saved = file_put_contents($path, $day); 
+$saved = file_put_contents("data/day.txt", $day); 
 
 // check save was success
 if ($saved === FALSE) {
