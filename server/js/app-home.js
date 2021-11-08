@@ -158,7 +158,7 @@ fetch(`/php/data/dropday.txt?${randomNumber}`)
 
         //if its a weekend
         if (date.getDay() == 6 || date.getDay() == 0) {
-            document.querySelector("#DropDayLabel").innerHTML = "The Next Drop Is: " + "<strong>" + DropDay + "</strong>";
+            document.querySelector("#DropDayLabel").innerHTML = "Next Day is:  " + "<strong>" + DropDay + "</strong>";
             document.querySelector("#Clock").innerHTML = "No School Today";
 
             return;
@@ -168,9 +168,9 @@ fetch(`/php/data/dropday.txt?${randomNumber}`)
 
         // school is over and updated through php
         if (currentTime > convertTime("14:25")) {
-            document.querySelector("#DropDayLabel").innerHTML = "The Next Drop Is: " + "<strong>" + DropDay + "</strong>";
+            document.querySelector("#DropDayLabel").innerHTML = "Tomorrow is Day: " + "<strong>" + DropDay + "</strong>";
         } else {
-            document.querySelector("#DropDayLabel").innerHTML = "Today Is Drop: " + "<strong>" + DropDay + "</strong>";
+            document.querySelector("#DropDayLabel").innerHTML = "Today is Day: " + "<strong>" + DropDay + "</strong>";
         }
 
         // update clock
