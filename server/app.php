@@ -10,7 +10,9 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!--CSS & Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link href="/css/app.css?<?php echo time(); ?>" rel="stylesheet">
 
     <!--JS-->
@@ -39,9 +41,9 @@
 <body>
 
     <!--Header-->
-    <div id="header">
+    <header id="header">
         <div>Home</div>
-    </div>
+    </header>
 
     <!--Slider-->
     <div class="swiper">
@@ -49,13 +51,13 @@
 
             <!--Home-->
             <div class="swiper-slide">
-                <div id="DropDayLabel" class="card large">
+                <div id="dayLabel" class="card large">
                     <i class="fa-spin fal fa-spinner-third fa-2x"></i>
                 </div>
-                <div id="Clock" class="card medium">
+                <div id="dayClock" class="card medium">
                     <i class="fa-spin fal fa-spinner-third fa-2x"></i>
                 </div>
-                <div class="card medium" id="AnnouncementsContainer">
+                <div id="announcements" class="card medium">
                     <i class="fa-spin fal fa-spinner-third fa-2x"></i>
                 </div>
             </div>
@@ -162,7 +164,7 @@
 
             <!--Calculator-->
             <div class="swiper-slide">
-                <div class="card large" id="CalculatorSelector">
+                <div class="card large" id="calculatorSelector">
                     <div>GPA</div>
                     <div>Final Grade</div>
                 </div>
@@ -209,16 +211,16 @@
                 </div>
 
                 <!--Final Grade Calc-->
-                <div id="FinalGrade" class="hide card medium">
-                    <div class="FinalGradeRow">
+                <div id="finalGrade" class="hide card medium">
+                    <div class="finalGradeRow">
                         <div>Q1</div>
                         <div>Q2</div>
                         <div>Q3</div>
                         <div>Q4</div>
                         <div>F</div>
                     </div>
-                    <div class="FinalGradeRow">
-                        <select class="FinalGradeSelect">
+                    <div class="finalGradeRow">
+                        <select class="finalGradeSelect">
                             <option value="">--</option>
                             <option value="4.6">A+</option>
                             <option value="4.0">A</option>
@@ -229,7 +231,7 @@
                             <option value="1.0">D</option>
                             <option value="0">F</option>
                         </select>
-                        <select class="FinalGradeSelect">
+                        <select class="finalGradeSelect">
                             <option value="">--</option>
                             <option value="4.6">A+</option>
                             <option value="4.0">A</option>
@@ -240,7 +242,7 @@
                             <option value="1.0">D</option>
                             <option value="0">F</option>
                         </select>
-                        <select class="FinalGradeSelect">
+                        <select class="finalGradeSelect">
                             <option value="">--</option>
                             <option value="4.6">A+</option>
                             <option value="4.0">A</option>
@@ -251,7 +253,7 @@
                             <option value="1.0">D</option>
                             <option value="0">F</option>
                         </select>
-                        <select class="FinalGradeSelect">
+                        <select class="finalGradeSelect">
                             <option value="">--</option>
                             <option value="4.6">A+</option>
                             <option value="4.0">A</option>
@@ -262,7 +264,7 @@
                             <option value="1.0">D</option>
                             <option value="0">F</option>
                         </select>
-                        <select class="FinalGradeSelect">
+                        <select class="finalGradeSelect">
                             <option value="">--</option>
                             <option value="4.6">A+</option>
                             <option value="4.0">A</option>
@@ -274,10 +276,10 @@
                             <option value="0">F</option>
                         </select>
                     </div>
-                    <div id="FinalGradeButton">
+                    <div id="finalGradeButton">
                         <i class="fas fa-calculator fa-2x"></i>
                     </div>
-                    <div id="FinalGradeNotice" class="small">
+                    <div id="finalGradeNotice" class="small">
                         <span>*Enter all grades that apply, anything else leave blank.</span>
                     </div>
                 </div>
@@ -287,7 +289,7 @@
     </div>
 
     <!--Footer + Nav-->
-    <div id="footer">
+    <footer id="footer">
         <div id="nav">
             <div class="navItem active" slide="0" title="Home">
                 <i class="fas fa-home-lg-alt fa-lg"></i>
@@ -299,7 +301,7 @@
                 <i class="fas fa-calculator fa-lg"></i>
             </div>
         </div>
-    </div>
+    </footer>
 
     <!--End Scripts-->
     <script src="/js/app.js?<?php echo time(); ?>"></script>

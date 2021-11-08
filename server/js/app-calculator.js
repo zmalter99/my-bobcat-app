@@ -91,12 +91,12 @@ document.querySelector("#GPACalculate").addEventListener("click", function () {
 /*--------------------------------------------------------*/
 //Final Grade
 
-document.querySelector("#FinalGradeButton").addEventListener("click", function () {
+document.querySelector("#finalGradeButton").addEventListener("click", function () {
     let totalGrade = 0;
     let totalQuarters = 0;
 
     //total everything
-    document.querySelectorAll(".FinalGradeSelect").forEach(function (element) {
+    document.querySelectorAll(".finalGradeSelect").forEach(function (element) {
         if (element.options[element.selectedIndex].value != "") {
             totalGrade += parseFloat(element.options[element.selectedIndex].value);
             totalQuarters++;
@@ -132,17 +132,17 @@ document.querySelector("#FinalGradeButton").addEventListener("click", function (
 
 
 //navigator for this page
-document.querySelectorAll("#CalculatorSelector > div").forEach(function (element) {
+document.querySelectorAll("#calculatorSelector > div").forEach(function (element) {
     element.addEventListener("click", function () {
-        if (document.querySelector("#CalculatorSelector > div.active")) {
-            document.querySelector("#CalculatorSelector > div.active").classList.remove("active");
+        if (document.querySelector("#calculatorSelector > div.active")) {
+            document.querySelector("#calculatorSelector > div.active").classList.remove("active");
         }
         this.classList.add("active");
         if (this.textContent == "GPA") {
             document.querySelector("#GPA").style.display = "block";
-            document.querySelector("#FinalGrade").style.display = "none";
+            document.querySelector("#finalGrade").style.display = "none";
         } else {
-            document.querySelector("#FinalGrade").style.display = "block";
+            document.querySelector("#finalGrade").style.display = "block";
             document.querySelector("#GPA").style.display = "none";
         }
     });

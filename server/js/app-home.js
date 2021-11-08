@@ -47,7 +47,7 @@ const schedule = [{
     }
 ];
 
-// each key in this object is dependent on the dropday
+// each key in this object is dependent on the day
 const periods = {
     1: [1, 2, 3, 6, 7],
     2: [1, 4, 5, 6, 8],
@@ -72,9 +72,12 @@ function convertTime(timeString) {
 
 //-----------------------------------------------------------------------------------------------//
 
+// return a message with the time remaing while given a time in seconds
 function getTimeRemaining(timeIn) {
     let remainingTime = timeIn - currentTime;
-    return `${Math.floor(remainingTime / 60)} minute(s) and ${remainingTime % 60} second(s)`;
+    let min = Math.floor(remainingTime / 60);
+    let sec = Math.floor(remainingTime % 60);
+    return `${min} ${(min > 1) ? "minutes" : "minute"} and ${sec} ${(sec > 1) ? "seconds" : "second"}`;
 }
 
 //check prefix we are wihtin school day
@@ -84,19 +87,19 @@ function updateClock() {
 
     //before office hours
     if (currentTime < convertTime("07:45")) {
-        document.querySelector("#Clock").innerHTML = "School hasn't started yet";
+        document.querySelector("#dayClock").innerHTML = "School hasn't started yet";
         return;
     }
 
     //first check if before office hours ends
     if (currentTime < convertTime("08:10")) {
-        document.querySelector("#Clock").innerHTML = `${getTimeRemaining(convertTime("08:10"))} remaining in office hours.`;
+        document.querySelector("#dayClock").innerHTML = `${getTimeRemaining(convertTime("08:10"))} remaining in office hours.`;
         return;
     }
 
     //check after school
     if (currentTime > convertTime("14:25")) {
-        document.querySelector("#Clock").innerHTML = "School has finished";
+        document.querySelector("#dayClock").innerHTML = "School has finished";
         return;
     }
 
@@ -107,11 +110,11 @@ function updateClock() {
         if (currentTime > schedule[i].start && currentTime < schedule[i].end) {
             // check if prefix equals Period
             if (schedule[i].prefix == "Period") {
-                document.querySelector("#Clock").textContent = `${getTimeRemaining(schedule[i].end)} remaining in Period ${periods[DropDay][schedule[i].periodIndex]}`;
+                document.querySelector("#dayClock").textContent = `${getTimeRemaining(schedule[i].end)} remaining in Period ${periods[day][schedule[i].periodIndex]}`;
             }
             // otherwise it's Lunch
             else {
-                document.querySelector("#Clock").textContent = `${getTimeRemaining(schedule[i].end)} remaining in Lunch`;
+                document.querySelector("#dayClock").textContent = `${getTimeRemaining(schedule[i].end)} remaining in Lunch`;
             }
             break;
         }
@@ -120,7 +123,7 @@ function updateClock() {
         if (currentTime > schedule[i].end && currentTime < schedule[i + 1].start) {
             // check if prefix equals Period
             if (schedule[i].prefix == "Period") {
-                document.querySelector("#Clock").textContent = `${getTimeRemaining(schedule[i+1].start)} until Period ${periods[DropDay][schedule[i+1].periodIndex]}`;
+                document.querySelector("#dayClock").textContent = `${getTimeRemaining(schedule[i+1].start)} until Period ${periods[day][schedule[i+1].periodIndex]}`;
             }
             // note since period 3 and lunch both end and start at 11:30 there will never be an instance where an else is required
             break;
@@ -134,23 +137,23 @@ function updateClock() {
 //-----------------------------------------------------------------------------------------------//
 
 //Drop Day which also starts initalization
-let DropDay;
+let day;
 const randomNumber = new Date().getTime();
-fetch(`/php/data/dropday.txt?${randomNumber}`)
+fetch(`/php/data/day.txt?${randomNumber}`)
     .then(function (data) {
         return data.text();
     }).then(function (data) {
 
-        DropDay = data;
+        day = data;
 
         //if special alert
-        if (DropDay == 0) {
-            document.querySelector("#DropDayLabel").innerHTML = "🚨<strong>Special Alert</strong>🚨";
+        if (day == 0) {
+            document.querySelector("#dayLabel").innerHTML = `🚨<strong>Special Alert</strong>🚨`;
             fetch(`/php/data/info.txt?${randomNumber}`)
                 .then(function (data) {
                     return data.text();
                 }).then(function (data) {
-                    document.querySelector("#Clock").innerHTML = data;
+                    document.querySelector("#dayClock").innerHTML = data;
                 });
 
             return;
@@ -158,8 +161,8 @@ fetch(`/php/data/dropday.txt?${randomNumber}`)
 
         //if its a weekend
         if (date.getDay() == 6 || date.getDay() == 0) {
-            document.querySelector("#DropDayLabel").innerHTML = "Next Day is:  " + "<strong>" + DropDay + "</strong>";
-            document.querySelector("#Clock").innerHTML = "No School Today";
+            document.querySelector("#dayLabel").innerHTML = `Next Day Is: <strong>${day}</strong>`;
+            document.querySelector("#dayClock").innerHTML = "No School Today";
 
             return;
         }
@@ -168,9 +171,9 @@ fetch(`/php/data/dropday.txt?${randomNumber}`)
 
         // school is over and updated through php
         if (currentTime > convertTime("14:25")) {
-            document.querySelector("#DropDayLabel").innerHTML = "Tomorrow is Day: " + "<strong>" + DropDay + "</strong>";
+            document.querySelector("#dayLabel").innerHTML = `Tomorrow Is Day: <strong>${day}</strong>`;
         } else {
-            document.querySelector("#DropDayLabel").innerHTML = "Today is Day: " + "<strong>" + DropDay + "</strong>";
+            document.querySelector("#dayLabel").innerHTML = `Today Is Day: <strong>${day}</strong>`;
         }
 
         // update clock
@@ -186,7 +189,7 @@ fetch(`/php/data/announcements.txt?${randomNumber}`)
     .then(function (data) {
         return data.text();
     }).then(function (data) {
-        document.querySelector("#AnnouncementsContainer").innerHTML = data;
+        document.querySelector("#announcements").innerHTML = data;
     });
 
 //bobcat tv fetch request
@@ -197,7 +200,7 @@ fetch(`/php/data/ad.txt?${randomNumber}`)
     .then(function (data) {
         if (data != "1") {
             let rawURL = "https://www.youtube.com/watch?v=WKsPez_EuZg".split("?v=")[1];
-            document.querySelector("#AnnouncementsContainer").insertAdjacentHTML("afterend", `
+            document.querySelector("#announcements").insertAdjacentHTML("afterend", `
                 <img src="/php/data/ad.png?${randomNumber}" id="bobcatTV">
                 <div id="bobcatTVFrame">
                     <iframe width="1280" height="720" src="https://www.youtube.com/embed/${rawURL}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
