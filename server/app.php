@@ -1,3 +1,7 @@
+<!--
+    If you wanna help maintain My Bobcat reach out to zach@maltertech.com
+-->
+
 <!doctype html>
 
 <html>
