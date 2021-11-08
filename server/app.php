@@ -20,7 +20,7 @@
     <!-- Swiper JS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/7.2.0/swiper-bundle.min.css" integrity="sha512-BYn1UZcpzkgi4cForzUzU/FqsewIcfXDYAU0tThFfehimrUrp5hOtcWPI1Wpli8rKopUIhaDCbxXPttBDTISgA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/7.2.0/swiper-bundle.min.js" integrity="sha512-XHnWZWvy5TkCnPgLU7XsWhGAks1JQ3uFutVxRSH0Z4+djsGkCkxVsYu+JgfrDicvbCmjfUf1HeMWYUvUYKgjzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6YM3Q8BBC5"></script>
     <script>
@@ -55,17 +55,6 @@
                 <div id="Clock" class="card medium">
                     <i class="fa-spin fal fa-spinner-third fa-2x"></i>
                 </div>
-                <div id="LunchSelect" class="card medium">
-                    <label>
-                        <input type="radio" name="Lunch" id="ALunch">
-                        A Lunch
-                    </label>
-                    <hr class="hr">
-                    <label>
-                        <input type="radio" name="Lunch" id="BLunch">
-                        B Lunch
-                    </label>
-                </div>
                 <div class="card medium" id="AnnouncementsContainer">
                     <i class="fa-spin fal fa-spinner-third fa-2x"></i>
                 </div>
@@ -74,54 +63,100 @@
             <!--Schedule-->
             <div class="swiper-slide">
                 <div class="card">
-                    <div id="ScheduleTitle" class="large">
-                        Schedule Dropdown
-                    </div>
-                    <select id="ScheduleSelect" class="medium">
-                        <option for="none" value="0" disabled selected>---</option>
-                        <optgroup label="Normal Schedule">
-                            <option for="Drop1">Drop 1</option>
-                            <option for="Drop2">Drop 2</option>
-                            <option for="Drop3">Drop 3</option>
-                            <option for="Drop4">Drop 4</option>
-                            <option for="Drop5">Drop 5</option>
-                            <option for="Drop6">Drop 6</option>
-                            <option for="Drop7">Drop 7</option>
-                            <option for="Drop8">Drop 8</option>
-                            <option for="ADay">A Day</option>
-                        </optgroup>
-                        <optgroup label="Delay Schedules">
-                            <option for="OneHourDelayDrop1">1 Hour Delay - Drop 1</option>
-                            <option for="OneHourDelayDrop2">1 Hour Delay - Drop 2</option>
-                            <option for="OneHourDelayDrop3">1 Hour Delay - Drop 3</option>
-                            <option for="OneHourDelayDrop4">1 Hour Delay - Drop 4</option>
-                            <option for="OneHourDelayDrop5">1 Hour Delay - Drop 5</option>
-                            <option for="OneHourDelayDrop6">1 Hour Delay - Drop 6</option>
-                            <option for="OneHourDelayDrop7">1 Hour Delay - Drop 7</option>
-                            <option for="OneHourDelayDrop8">1 Hour Delay - Drop 8</option>
-                            <option for="none" value="0" disabled>------------------------------</option>
-                            <option for="TwoHourDelayDrop1">2 Hour Delay - Drop 1</option>
-                            <option for="TwoHourDelayDrop2">2 Hour Delay - Drop 2</option>
-                            <option for="TwoHourDelayDrop3">2 Hour Delay - Drop 3</option>
-                            <option for="TwoHourDelayDrop4">2 Hour Delay - Drop 4</option>
-                            <option for="TwoHourDelayDrop5">2 Hour Delay - Drop 5</option>
-                            <option for="TwoHourDelayDrop6">2 Hour Delay - Drop 6</option>
-                            <option for="TwoHourDelayDrop7">2 Hour Delay - Drop 7</option>
-                            <option for="TwoHourDelayDrop8">2 Hour Delay - Drop 8</option>
-                            <option for="TwoHourDelayADay">2 Hour Delay - A Day</option>
-                            <option for="none" value="0" disabled>------------------------------</option>
-                            <option for="ThreeHourDelayDrop1">3 Hour Delay - Drop 1</option>
-                            <option for="ThreeHourDelayDrop2">3 Hour Delay - Drop 2</option>
-                            <option for="ThreeHourDelayDrop3">3 Hour Delay - Drop 3</option>
-                            <option for="ThreeHourDelayDrop4">3 Hour Delay - Drop 4</option>
-                            <option for="ThreeHourDelayDrop5">3 Hour Delay - Drop 5</option>
-                            <option for="ThreeHourDelayDrop6">3 Hour Delay - Drop 6</option>
-                            <option for="ThreeHourDelayDrop7">3 Hour Delay - Drop 7</option>
-                            <option for="ThreeHourDelayDrop8">3 Hour Delay - Drop 8</option>
-                            <option for="ThreeHourDelayADay">3 Hour Delay - A Day</option>
-                        </optgroup>
-                    </select>
-                    <div id="ScheduleTable"></div>
+                    <div id="scheduleTitle" class="large"> Schedule Dropdown </div>
+
+                    <table id="scheduleTable" class="medium">
+                        <tr>
+                            <td>Day</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td>7:45-8:10</td>
+                            <td>OH</td>
+                            <td>OH</td>
+                            <td>OH</td>
+                            <td>OH</td>
+                            <td>OH</td>
+                            <td>OH</td>
+                            <td>OH</td>
+                            <td>OH</td>
+                        </tr>
+                        <tr>
+                            <td>8:10-9:14</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>9:18-10:22</td>
+                            <td>2</td>
+                            <td>4</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>4</td>
+                            <td>2</td>
+                            <td>4</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>10:26-11:30</td>
+                            <td>3</td>
+                            <td>5</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>5</td>
+                            <td>3</td>
+                            <td>5</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>11:30-12:13</td>
+                            <td><i class="fas fa-utensils"></i></td>
+                            <td><i class="fas fa-utensils"></i></td>
+                            <td><i class="fas fa-utensils"></i></td>
+                            <td><i class="fas fa-utensils"></i></td>
+                            <td><i class="fas fa-utensils"></i></td>
+                            <td><i class="fas fa-utensils"></i></td>
+                            <td><i class="fas fa-utensils"></i></td>
+                            <td><i class="fas fa-utensils"></i></td>
+                        </tr>
+                        <tr>
+                            <td>12:13-1:17</td>
+                            <td>6</td>
+                            <td>6</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>6</td>
+                            <td>6</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>1:21-2:25</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>8</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>8</td>
+                        </tr>
+                    </table>
+                    <div id="scheduleNotice" class="small">*OH - Office Hours</div>
+
                 </div>
             </div>
 
@@ -269,7 +304,6 @@
     <!--End Scripts-->
     <script src="/js/app.js?<?php echo time(); ?>"></script>
     <script src="/js/app-home.js?<?php echo time(); ?>"></script>
-    <script src="/js/app-schedule.js?<?php echo time(); ?>"></script>
     <script src="/js/app-calculator.js?<?php echo time(); ?>"></script>
 </body>
 

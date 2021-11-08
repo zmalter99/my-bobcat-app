@@ -132,32 +132,15 @@ body {
 /****Home******/
 #DropDayLabel,
 #Clock,
-#LunchSelect,
 #AnnouncementsContainer {
     text-align: center;
     padding: 8px 16px;
 }
 
-#LunchSelect label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-#LunchSelect input {
-    height: 40px;
-    width: 40px;
-    margin-right: 20px;
-    border-radius: 100%;
-    -webkit-appearance: radio;
-    appearance: radio;
-}
-
 #bobcatTV {
     display: block;
     max-width: 640px;
-    margin: auto;
+    margin: 0 auto 15px;
     width: 100%;
     height: auto;
     border-radius: 5px;
@@ -188,43 +171,36 @@ body {
 }
 
 /********Schedule******/
-#ScheduleTitle {
+#scheduleTitle {
     text-align: center;
     padding-bottom: 10px;
 }
 
-#ScheduleSelect,
-#ScheduleSelect option {
-    border: 1px solid black;
-    border-radius: 0px;
-    appearance: none;
-    -webkit-appearance: none;
-    padding: 10px 5px;
-    font-size: 18px;
+#scheduleTable {
     width: 100%;
-}
-
-#ScheduleTable {
-    padding-top: 10px;
+    border-collapse: collapse;
     text-align: center;
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 225px;
-    margin: auto;
-    justify-content: center;
+    margin-bottom: 10px;
 }
 
-#ScheduleTable>div {
-    width: 50%;
+#scheduleTable td:nth-child(even) {
+    background-color: #cccccc;
+}
+
+#scheduleTable td {
     padding: 3px;
 }
 
-#ScheduleTable hr {
-    border: 2px solid #A00000;
-    margin: 10px auto;
-    background-color: #A00000;
-    width: 100%;
+#scheduleNotice {
+    text-align: center;
 }
+
+@media(max-width: 750px) {
+    #scheduleTable {
+        font-size: 13px !important;
+    }
+}
+
 
 /********Calculator******/
 #CalculatorSelector {

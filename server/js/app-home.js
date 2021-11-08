@@ -1,158 +1,135 @@
 //Global time variable 
-let currentTime, dateObj;
+const date = new Date();
+let currentTime = getCurrentDate();
 
-(function getTime() {
-    dateObj = new Date();
-    Day = dateObj.getDay();
-    currentTime = (dateObj.getHours() * 3600) + (dateObj.getMinutes() * 60) + dateObj.getSeconds();
-    setTimeout(getTime, 1000);
-})();
+function getCurrentDate() {
+    let exactDate = new Date();
+    return (exactDate.getHours() * 3600) + (exactDate.getMinutes() * 60) + exactDate.getSeconds();
+}
 
 //-----------------------------------------------------------------------------------------------//
 
 //all my arrays of time
-const RegDayA = [
-    ["Period", "0745", "0834", 1],
-    ["Period", "0838", "0930", 2],
-    ["Period", "0934", "1023", 3],
-    ["Period", "1027", "1116", 4],
-    ["Lunch", "1120", "1146", "A"],
-    ["Period", "1149", "1238", 5],
-    ["Period", "1242", "1331", 6],
-    ["Period", "1335", "1425", 7]
-];
-
-const RegDayB = [
-    ["Period", "0745", "0834", 1],
-    ["Period", "0838", "0930", 2],
-    ["Period", "0934", "1023", 3],
-    ["Period", "1027", "1116", 4],
-    ["Period", "1120", "1209", 5],
-    ["Lunch", "1212", "1238", "B"],
-    ["Period", "1242", "1331", 6],
-    ["Period", "1335", "1425", 7]
-];
-
-const ADayA = [
-    ["Period", "0745", "0829", 1],
-    ["Period", "0832", "0918", 2],
-    ["Period", "0921", "1005", 3],
-    ["Period", "1008", "1052", 4],
-    ["Period", "1055", "1139", 5],
-    ["Lunch", "1139", "1204", "A"],
-    ["Period", "1207", "1251", 6],
-    ["Period", "1254", "1338", 7],
-    ["Period", "1341", "1425", 8]
-];
-
-const ADayB = [
-    ["Period", "0745", "0829", 1],
-    ["Period", "0832", "0918", 2],
-    ["Period", "0921", "1005", 3],
-    ["Period", "1008", "1052", 4],
-    ["Period", "1055", "1139", 5],
-    ["Period", "1142", "1226", 6],
-    ["Lunch", "1226", "1251", "B"],
-    ["Period", "1254", "1338", 7],
-    ["Period", "1341", "1425", 8]
-];
-
-function convert(array) {
-    //convert all numbers to seconds from military format
-    for (let i = 0; i < array.length; i++) {
-        //simply isolate each number into hours and minutees and convert them into seconds
-        //console.log(array[i][1].substring(0, 2) * 3600);
-        array[i][1] = (array[i][1]).substring(0, 2) * 3600 + (array[i][1]).substring(2, 4) * 60;
-        array[i][2] = (array[i][2]).substring(0, 2) * 3600 + (array[i][2]).substring(2, 4) * 60;
+const schedule = [{
+        prefix: "Period",
+        start: "08:10",
+        end: "09:14",
+        periodIndex: 0
+    },
+    {
+        prefix: "Period",
+        start: "09:18",
+        end: "10:22",
+        periodIndex: 1
+    },
+    {
+        prefix: "Period",
+        start: "10:26",
+        end: "11:30",
+        periodIndex: 2
+    },
+    {
+        prefix: "Lunch",
+        start: "11:30",
+        end: "12:13",
+    },
+    {
+        prefix: "Period",
+        start: "12:13",
+        end: "13:17",
+        periodIndex: 3
+    },
+    {
+        prefix: "Period",
+        start: "13:17",
+        end: "14:25",
+        periodIndex: 4
     }
-}
+];
 
-convert(ADayA);
-convert(ADayB);
-convert(RegDayA);
-convert(RegDayB);
+// each key in this object is dependent on the dropday
+const periods = {
+    1: [1, 2, 3, 6, 7],
+    2: [1, 4, 5, 6, 8],
+    3: [2, 3, 4, 5, 7],
+    4: [1, 2, 5, 6, 8],
+    5: [3, 4, 5, 7, 8],
+    6: [1, 2, 3, 6, 7],
+    7: [1, 4, 5, 6, 8],
+    8: [2, 3, 4, 7, 8]
+};
+
+// convert military time to seconds from 
+schedule.forEach(function (period) {
+    period.start = convertTime(period.start);
+    period.end = convertTime(period.end);
+});
+
+function convertTime(timeString) {
+    let timeArray = timeString.split(":");
+    return (timeArray[0] * 3600) + (timeArray[1] * 60);
+}
 
 //-----------------------------------------------------------------------------------------------//
 
-//check prefix we are wihtin school day
-function updateClock(array) {
+function getTimeRemaining(timeIn) {
+    let remainingTime = timeIn - currentTime;
+    return `${Math.floor(remainingTime / 60)} minute(s) and ${remainingTime % 60} second(s)`;
+}
 
-    //before 6:45AM
-    if (currentTime < 24300) {
-        document.querySelector("#Clock").innerHTML = "School Hasnt Started Yet";
+//check prefix we are wihtin school day
+function updateClock() {
+    // update exact time
+    currentTime = getCurrentDate();
+
+    //before office hours
+    if (currentTime < convertTime("07:45")) {
+        document.querySelector("#Clock").innerHTML = "School hasn't started yet";
         return;
     }
 
-    //first check if before school && after 645
-    if (currentTime > 24300 && currentTime < 27900) {
-        let temp = 27900 - currentTime;
-        document.querySelector("#Clock").innerHTML = "School starts in " + Math.floor(temp / 60) + " minute(s) and " + temp % 60 + " second(s)";
+    //first check if before office hours ends
+    if (currentTime < convertTime("08:10")) {
+        document.querySelector("#Clock").innerHTML = `${getTimeRemaining(convertTime("08:10"))} remaining in office hours.`;
         return;
     }
 
     //check after school
-    if (currentTime > 51900) {
-        document.querySelector("#Clock").innerHTML = "School Has Finished";
+    if (currentTime > convertTime("14:25")) {
+        document.querySelector("#Clock").innerHTML = "School has finished";
         return;
     }
 
-    //cehck durigng school with forloop
-    for (let i = 0; i < array.length; i++) {
-        let timeLeft = false;
-        let msgType;
-        //check if within period
-        if (currentTime > array[i][1] && currentTime < array[i][2]) {
-            timeLeft = array[i][2] - currentTime;
-            msgType = "remaining in";
+    //check during school with for loop
+    for (let i = 0; i < schedule.length; i++) {
 
-        }
-        //check if betweeen two periods
-        if (currentTime > array[i][2] && currentTime < array[i + 1][1]) {
-            timeLeft = array[i + 1][1] - currentTime;
-            msgType = "until";
-        }
-        if (timeLeft) {
-            let prefix = array[i][0];
-            let period = array[i][3];
-            //only increase dorp day if the real dropday is equal periods or greater and not A OR B lunch
-            if (period > 0 && period < 9 && period >= DropDay) {
-                period++;
+        //check if within a period
+        if (currentTime > schedule[i].start && currentTime < schedule[i].end) {
+            // check if prefix equals Period
+            if (schedule[i].prefix == "Period") {
+                document.querySelector("#Clock").textContent = `${getTimeRemaining(schedule[i].end)} remaining in Period ${periods[DropDay][schedule[i].periodIndex]}`;
             }
-            document.querySelector("#Clock").textContent = `${Math.floor(timeLeft / 60)} minute(s) and ${timeLeft % 60} second(s) ${msgType} ${prefix} ${period}`;
+            // otherwise it's Lunch
+            else {
+                document.querySelector("#Clock").textContent = `${getTimeRemaining(schedule[i].end)} remaining in Lunch`;
+            }
             break;
         }
-    }
 
-}
-
-//-----------------------------------------------------------------------------------------------//
-
-let lunch;
-//check if there is already a stored lunch
-if (localStorage.lunch) {
-    lunch = localStorage.lunch;
-    if (lunch == "A") {
-        document.querySelector("#ALunch").checked = true;
-    } else {
-        document.querySelector("#BLunch").checked = true;
-    }
-} else {
-    document.querySelector("#ALunch").checked = true;
-    lunch = "A";
-    localStorage.lunch = "A";
-}
-
-document.querySelectorAll("[name='Lunch']").forEach(function (element) {
-    element.addEventListener("change", function () {
-        if (document.querySelector("#ALunch").checked) {
-            lunch = "A";
-            localStorage.lunch = "A";
-        } else {
-            lunch = "B";
-            localStorage.lunch = "B";
+        //check if betweeen two periods
+        if (currentTime > schedule[i].end && currentTime < schedule[i + 1].start) {
+            // check if prefix equals Period
+            if (schedule[i].prefix == "Period") {
+                document.querySelector("#Clock").textContent = `${getTimeRemaining(schedule[i+1].start)} until Period ${periods[DropDay][schedule[i+1].periodIndex]}`;
+            }
+            // note since period 3 and lunch both end and start at 11:30 there will never be an instance where an else is required
+            break;
         }
-    });
-});
+
+    }
+
+}
+
 
 //-----------------------------------------------------------------------------------------------//
 
@@ -164,7 +141,7 @@ fetch(`/php/data/dropday.txt?${randomNumber}`)
         return data.text();
     }).then(function (data) {
 
-        const DropDay = data;
+        DropDay = data;
 
         //if special alert
         if (DropDay == 0) {
@@ -176,50 +153,30 @@ fetch(`/php/data/dropday.txt?${randomNumber}`)
                     document.querySelector("#Clock").innerHTML = data;
                 });
 
-            //if its a weekend
-        } else if (dateObj.getDay() == 6 || dateObj.getDay() == 0) {
+            return;
+        }
 
-            //check if a day
-            if (DropDay == 9) {
-                document.querySelector("#DropDayLabel").innerHTML = "The Next Drop Is: " + "<strong>" + "A" + "</strong>";
-            } else {
-                document.querySelector("#DropDayLabel").innerHTML = "The Next Drop Is: " + "<strong>" + DropDay + "</strong>";
-            }
+        //if its a weekend
+        if (date.getDay() == 6 || date.getDay() == 0) {
+            document.querySelector("#DropDayLabel").innerHTML = "The Next Drop Is: " + "<strong>" + DropDay + "</strong>";
             document.querySelector("#Clock").innerHTML = "No School Today";
 
-        } else {
-            //else just run normally with 1000 interval delay for loading animation
-
-            //DropDay Laberl Setter
-            //school is over and updated through php
-            if (currentTime > 51900) {
-                if (DropDay == 9) {
-                    document.querySelector("#DropDayLabel").innerHTML = "The Next Drop Is: " + "<strong>" + "A" + "</strong>";
-                } else {
-                    document.querySelector("#DropDayLabel").innerHTML = "The Next Drop Is: " + "<strong>" + DropDay + "</strong>";
-                }
-            } else {
-                if (DropDay == 9) {
-                    document.querySelector("#DropDayLabel").innerHTML = "Today Is Drop: " + "<strong>" + "A" + "</strong>";
-                } else {
-                    document.querySelector("#DropDayLabel").innerHTML = "Today Is Drop: " + "<strong>" + DropDay + "</strong>";
-                }
-            }
-
-            //determine what array to pass to getClock && and we can say < 9 becease we alreayd checks for 0 above
-            (function clockInterval() {
-                if (DropDay < 9 && lunch == "A") {
-                    updateClock(RegDayA);
-                } else if (DropDay < 9 && lunch == "B") {
-                    updateClock(RegDayB);
-                } else if (DropDay == 9 && lunch == "A") {
-                    updateClock(ADayA);
-                } else if (DropDay == 9 && lunch == "B") {
-                    updateClock(ADayB)
-                }
-                setTimeout(clockInterval, 1000);
-            })();
+            return;
         }
+
+        // otherwise just run normally with 1000 interval delay for loading animation
+
+        // school is over and updated through php
+        if (currentTime > convertTime("14:25")) {
+            document.querySelector("#DropDayLabel").innerHTML = "The Next Drop Is: " + "<strong>" + DropDay + "</strong>";
+        } else {
+            document.querySelector("#DropDayLabel").innerHTML = "Today Is Drop: " + "<strong>" + DropDay + "</strong>";
+        }
+
+        // update clock
+        setInterval(function () {
+            updateClock();
+        }, 1000);
 
     });
 
