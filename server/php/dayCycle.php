@@ -1,5 +1,16 @@
 <?php
 
+/* Crontab 
+############MY BOBCAT#############
+25 7 * * * wget https://mybobcat.net/dayCycle.php?password=myb0b(%40t
+*/
+
+// check password
+if (!isset($_GET["password"]) && $_GET["password"] == "myb0b(@t") {
+    error_log("Invalid password.");
+    die();
+}
+
 // get day
 $dayRaw = file_get_contents("data/day.txt");
 
