@@ -1,15 +1,15 @@
-//Global time variable 
-const date = new Date();
-let currentTime = getCurrentDate();
+// global time variable 
+let currentTime = getSeconds();
 
-function getCurrentDate() {
+// get the exact amount of seconds relative to 00:00
+function getSeconds() {
     let exactDate = new Date();
     return (exactDate.getHours() * 3600) + (exactDate.getMinutes() * 60) + exactDate.getSeconds();
 }
 
 //-----------------------------------------------------------------------------------------------//
 
-//all my arrays of time
+//any in given day there at the following time slots
 const schedule = [{
         prefix: "Period",
         start: "08:10",
@@ -48,6 +48,7 @@ const schedule = [{
 ];
 
 // each key in this object is dependent on the day
+// for instance day 1 has periods 1,2,3,6,7
 const periods = {
     1: [1, 2, 3, 6, 7],
     2: [1, 4, 5, 6, 8],
@@ -59,12 +60,13 @@ const periods = {
     8: [2, 3, 4, 7, 8]
 };
 
-// convert military time to seconds from 
+// convert every time in each time period
 schedule.forEach(function (period) {
     period.start = convertTime(period.start);
     period.end = convertTime(period.end);
 });
 
+// convert military time to seconds from 00:00
 function convertTime(timeString) {
     let timeArray = timeString.split(":");
     return (timeArray[0] * 3600) + (timeArray[1] * 60);
@@ -77,13 +79,13 @@ function getTimeRemaining(timeIn) {
     let remainingTime = timeIn - currentTime;
     let min = Math.floor(remainingTime / 60);
     let sec = Math.floor(remainingTime % 60);
-    return `${min} ${(min > 1) ? "minutes" : "minute"} and ${sec} ${(sec > 1) ? "seconds" : "second"}`;
+    return `<b>${min}</b> ${(min > 1) ? "minutes" : "minute"} and <b>${sec}</b> ${(sec > 1) ? "seconds" : "second"}`;
 }
 
 //check prefix we are wihtin school day
 function updateClock() {
     // update exact time
-    currentTime = getCurrentDate();
+    currentTime = getSeconds();
 
     //before office hours
     if (currentTime < convertTime("07:45")) {
@@ -143,40 +145,36 @@ fetch(`/php/data/day.txt?${randomNumber}`)
     .then(function (data) {
         return data.text();
     }).then(function (data) {
-
         day = data;
 
         //if special alert
         if (day == 0) {
-            document.querySelector("#dayLabel").innerHTML = `🚨<strong>Special Alert</strong>🚨`;
+            document.querySelector("#dayLabel").innerHTML = `🚨<b>Special Alert</b>🚨`;
             fetch(`/php/data/info.txt?${randomNumber}`)
                 .then(function (data) {
                     return data.text();
                 }).then(function (data) {
                     document.querySelector("#dayClock").innerHTML = data;
                 });
-
             return;
         }
 
-        //if its a weekend
-        if (date.getDay() == 6 || date.getDay() == 0) {
-            document.querySelector("#dayLabel").innerHTML = `Next Day Is: <strong>${day}</strong>`;
+        // if its a weekend
+        if (new Date().getDay() == 6 || new Date().getDay() == 0) {
+            document.querySelector("#dayLabel").innerHTML = `Next Day Is: <b>${day}</b>`;
             document.querySelector("#dayClock").innerHTML = "No School Today";
-
             return;
         }
 
-        // otherwise just run normally with 1000 interval delay for loading animation
-
-        // school is over and updated through php
+        // is current time is pass 2:25PM school is over
         if (currentTime > convertTime("14:25")) {
-            document.querySelector("#dayLabel").innerHTML = `Tomorrow Is Day: <strong>${day}</strong>`;
-        } else {
-            document.querySelector("#dayLabel").innerHTML = `Today Is Day: <strong>${day}</strong>`;
+            document.querySelector("#dayLabel").innerHTML = `Tomorrow Is Day: <b>${day}</b>`;
+            document.querySelector("#dayClock").innerHTML = "School has finished";
+            return;
         }
 
-        // update clock
+        // otherwise we update the clock every second
+        document.querySelector("#dayLabel").innerHTML = `Today Is Day: <b>${day}</b>`;
         setInterval(function () {
             updateClock();
         }, 1000);
