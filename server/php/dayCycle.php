@@ -2,11 +2,11 @@
 
 /* Crontab 
 ############MY BOBCAT#############
-25 19 * * 1-5 wget -q "https://mybobcat.net/php/dayCycle.php?password=myb0b(%40t"
+25 19 * * 1-5 wget -q https://mybobcat.net/php/dayCycle.php?password=6MGYGAwjMvUfJFhGh6YTvKqHERsZVQoqL4kJVRrwTTpycuHNme
 */
 
 // check password
-if (!isset($_GET["password"]) && $_GET["password"] == "myb0b(@t") {
+if (!isset($_GET["password"]) && $_GET["password"] == "6MGYGAwjMvUfJFhGh6YTvKqHERsZVQoqL4kJVRrwTTpycuHNme") {
     error_log("Invalid password.");
     die();
 }
