@@ -79,7 +79,7 @@ function getTimeRemaining(timeIn) {
     let remainingTime = timeIn - currentTime;
     let min = Math.floor(remainingTime / 60);
     let sec = Math.floor(remainingTime % 60);
-    return `<strong>${min}</strong> ${(min > 1) ? "minutes" : "minute"} and <strong>${sec}</strong> ${(sec > 1) ? "seconds" : "second"}`;
+    return `<b>${min}</b> ${(min > 1) ? "minutes" : "minute"} and <b>${sec}</b> ${(sec > 1) ? "seconds" : "second"}`;
 }
 
 //check prefix we are wihtin school day
@@ -112,11 +112,11 @@ function updateClock() {
         if (currentTime > schedule[i].start && currentTime < schedule[i].end) {
             // check if prefix equals Period
             if (schedule[i].prefix == "Period") {
-                document.querySelector("#dayClock").textContent = `${getTimeRemaining(schedule[i].end)} remaining in Period ${periods[day][schedule[i].periodIndex]}`;
+                document.querySelector("#dayClock").innerHTML = `${getTimeRemaining(schedule[i].end)} remaining in Period ${periods[day][schedule[i].periodIndex]}`;
             }
             // otherwise it's Lunch
             else {
-                document.querySelector("#dayClock").textContent = `${getTimeRemaining(schedule[i].end)} remaining in Lunch`;
+                document.querySelector("#dayClock").innerHTML = `${getTimeRemaining(schedule[i].end)} remaining in Lunch`;
             }
             break;
         }
@@ -125,7 +125,7 @@ function updateClock() {
         if (currentTime > schedule[i].end && currentTime < schedule[i + 1].start) {
             // check if prefix equals Period
             if (schedule[i].prefix == "Period") {
-                document.querySelector("#dayClock").textContent = `${getTimeRemaining(schedule[i+1].start)} until Period ${periods[day][schedule[i+1].periodIndex]}`;
+                document.querySelector("#dayClock").innerHTML = `${getTimeRemaining(schedule[i+1].start)} until Period ${periods[day][schedule[i+1].periodIndex]}`;
             }
             // note since period 3 and lunch both end and start at 11:30 there will never be an instance where an else is required
             break;
@@ -149,7 +149,7 @@ fetch(`/php/data/day.txt?${randomNumber}`)
 
         //if special alert
         if (day == 0) {
-            document.querySelector("#dayLabel").innerHTML = `🚨<strong>Special Alert</strong>🚨`;
+            document.querySelector("#dayLabel").innerHTML = `🚨<b>Special Alert</b>🚨`;
             fetch(`/php/data/info.txt?${randomNumber}`)
                 .then(function (data) {
                     return data.text();
@@ -161,20 +161,20 @@ fetch(`/php/data/day.txt?${randomNumber}`)
 
         // if its a weekend
         if (new Date().getDay() == 6 || new Date().getDay() == 0) {
-            document.querySelector("#dayLabel").innerHTML = `Next Day Is: <strong>${day}</strong>`;
+            document.querySelector("#dayLabel").innerHTML = `Next Day Is: <b>${day}</b>`;
             document.querySelector("#dayClock").innerHTML = "No School Today";
             return;
         }
 
         // is current time is pass 2:25PM school is over
         if (currentTime > convertTime("14:25")) {
-            document.querySelector("#dayLabel").innerHTML = `Tomorrow Is Day: <strong>${day}</strong>`;
+            document.querySelector("#dayLabel").innerHTML = `Tomorrow Is Day: <b>${day}</b>`;
             document.querySelector("#dayClock").innerHTML = "School has finished";
             return;
         }
 
         // otherwise we update the clock every second
-        document.querySelector("#dayLabel").innerHTML = `Today Is Day: <strong>${day}</strong>`;
+        document.querySelector("#dayLabel").innerHTML = `Today Is Day: <b>${day}</b>`;
         setInterval(function () {
             updateClock();
         }, 1000);
