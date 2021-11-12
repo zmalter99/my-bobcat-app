@@ -69,8 +69,6 @@
             <!--Schedule-->
             <div class="swiper-slide">
                 <div class="card">
-                    <div id="scheduleTitle" class="large"> Schedule Dropdown </div>
-
                     <table id="scheduleTable" class="medium">
                         <tr>
                             <td>Day</td>
