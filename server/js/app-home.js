@@ -79,7 +79,7 @@ function getTimeRemaining(timeIn) {
     let remainingTime = timeIn - currentTime;
     let min = Math.floor(remainingTime / 60);
     let sec = Math.floor(remainingTime % 60);
-    return `<b>${min}</b> ${(min > 1) ? "minutes" : "minute"} and <b>${sec}</b> ${(sec > 1) ? "seconds" : "second"}`;
+    return `<b>${min}</b> ${(min == 1) ? "minute" : "minutes"} and <b>${sec}</b> ${(sec == 1) ? "second" : "seconds"}`;
 }
 
 //check prefix we are wihtin school day
