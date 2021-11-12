@@ -112,11 +112,11 @@ function updateClock() {
         if (currentTime > schedule[i].start && currentTime < schedule[i].end) {
             // check if prefix equals Period
             if (schedule[i].prefix == "Period") {
-                document.querySelector("#dayClock").innerHTML = `${getTimeRemaining(schedule[i].end)} remaining in Period ${periods[day][schedule[i].periodIndex]}`;
+                document.querySelector("#dayClock").innerHTML = `${getTimeRemaining(schedule[i].end)} remaining in Period <b>${periods[day][schedule[i].periodIndex]}</b>`;
             }
             // otherwise it's Lunch
             else {
-                document.querySelector("#dayClock").innerHTML = `${getTimeRemaining(schedule[i].end)} remaining in Lunch`;
+                document.querySelector("#dayClock").innerHTML = `${getTimeRemaining(schedule[i].end)} remaining in <b>Lunch</b>`;
             }
             break;
         }
@@ -125,7 +125,7 @@ function updateClock() {
         if (currentTime > schedule[i].end && currentTime < schedule[i + 1].start) {
             // check if prefix equals Period
             if (schedule[i].prefix == "Period") {
-                document.querySelector("#dayClock").innerHTML = `${getTimeRemaining(schedule[i+1].start)} until Period ${periods[day][schedule[i+1].periodIndex]}`;
+                document.querySelector("#dayClock").innerHTML = `${getTimeRemaining(schedule[i+1].start)} until Period <b>${periods[day][schedule[i+1].periodIndex]}</b>`;
             }
             // note since period 3 and lunch both end and start at 11:30 there will never be an instance where an else is required
             break;
