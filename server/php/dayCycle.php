@@ -2,7 +2,7 @@
 
 /* Crontab 
 ############MY BOBCAT#############
-25 19 * * 1-5 wget -q https://mybobcat.net/php/dayCycle.php?password=6MGYGAwjMvUfJFhGh6YTvKqHERsZVQoqL4kJVRrwTTpycuHNme
+25 19 * * 1-5 curl https://mybobcat.net/php/dayCycle.php?password=6MGYGAwjMvUfJFhGh6YTvKqHERsZVQoqL4kJVRrwTTpycuHNme
 */
 
 // check password
