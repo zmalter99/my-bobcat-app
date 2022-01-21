@@ -16,8 +16,8 @@ jobs:
       uses: easingthemes/ssh-deploy@main
       env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: ${{ secrets.REMOTE_TARGET }}
+          REMOTE_HOST: maltertech.com
+          REMOTE_USER: zach
+          TARGET: /home/zach/domains/mybobcat.net/
           EXCLUDE: ".*, /php/data/"
           SOURCE: server/
