@@ -38,7 +38,7 @@ class WebViewAppState extends State<WebViewApp> {
           child: Stack(
             children: <Widget>[
               WebView(
-                initialUrl: "https://mybobcat.net/app.php",
+                initialUrl: "https://mybobcat.net/app",
                 javascriptMode: JavascriptMode.unrestricted,
                 onPageFinished: (finish) {
                   setState(() {
